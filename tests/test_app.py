@@ -8,7 +8,7 @@ def test_health_returns_200_and_healthy_status():
     response = client.get("/health")
     assert response.status_code == 200
     body = response.json()
-    assert body["status"] == "wrong"   # <-- deliberately broken
+    assert body["status"] == "healthy"
     assert body["application"] == "student-ml-api"
 
 
