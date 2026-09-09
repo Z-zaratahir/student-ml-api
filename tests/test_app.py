@@ -5,11 +5,10 @@ client = TestClient(app)
 
 
 def test_health_returns_200_and_healthy_status():
-    """Basic liveness check — the single most important endpoint for orchestration/k8s probes."""
     response = client.get("/health")
     assert response.status_code == 200
     body = response.json()
-    assert body["status"] == "healthy"
+    assert body["status"] == "wrong"   # <-- deliberately broken
     assert body["application"] == "student-ml-api"
 
 
