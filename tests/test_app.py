@@ -15,7 +15,10 @@ def test_health_returns_200_and_healthy_status():
 def test_health_reports_correct_version():
     """Guards against the version string drifting out of sync across the app."""
     response = client.get("/health")
-    assert response.json()["version"] == "1.0.0"
+    assert response.status_code == 200
+    body = response.json()
+    assert body["application_version"] == "1.1.0"
+    assert body["model_version"] == "model-1"
 
 
 def test_predict_success_returns_expected_shape_and_value():

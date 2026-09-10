@@ -2,7 +2,8 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 
 APP_NAME = "student-ml-api"
-APP_VERSION = "1.0.0"
+APP_VERSION = "1.1.0"
+MODEL_VERSION = "model-1"
 
 app = FastAPI(title=APP_NAME, version=APP_VERSION)
 
@@ -24,7 +25,8 @@ def health():
     return {
         "status": "healthy",
         "application": APP_NAME,
-        "version": APP_VERSION,
+        "application_version": APP_VERSION,
+        "model_version": MODEL_VERSION,
     }
 
 
@@ -32,7 +34,8 @@ def health():
 def version():
     return {
         "application": APP_NAME,
-        "version": APP_VERSION,
+        "application_version": APP_VERSION,
+        "model_version": MODEL_VERSION,
     }
 
 
